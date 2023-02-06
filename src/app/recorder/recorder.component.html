@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row text-center m-5">
-    <p class="text-center">Record me!</p>
+    <h4 class="text-center">Record Session</h4>
+    <span class="text-center text-muted" *ngIf="!isRecording">Stopped</span>
+    <span class="text-center text-muted" *ngIf="isRecording">Recording</span>
     <div class="col-12 align-self-center">
       <div class="btn btn-link" (click)="recordAudio()">
         <div class="circle"><span class="fa-3x fa" [ngClass]="!isRecording? 'fa-microphone' : 'fa-square'"></span></div>
