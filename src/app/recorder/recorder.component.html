@@ -6,6 +6,6 @@
         <div class="circle"><span class="fa-3x fa" [ngClass]="!isRecording? 'fa-microphone' : 'fa-square'"></span></div>
       </div>
     </div>
-    <p class="text-center" *ngIf="!isRecording && elapsedTime > 0">{{elapsedTime}} seconds</p>
+    <p class="text-center" *ngIf="elapsedTime > 0">{{elapsedTime}} seconds</p>
   </div>
 </div>

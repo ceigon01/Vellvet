@@ -34,13 +34,14 @@ export class RecorderComponent {
         this.recorder.start();
         let refreshIntervalId
         this.recorder.onstart = function (ev){
-          let start = new Date();
-          refreshIntervalId = setInterval(() => {
-            // Your task code
-            ng.elapsedTime = ng.getElapsedTime(start);
-          }, 1000);
+
 
         }
+        let start = new Date();
+        refreshIntervalId = setInterval(() => {
+          // Your task code
+          ng.elapsedTime = ng.getElapsedTime(start);
+        }, 1000);
 
         this.recorder.onstop = function(ev){
           console.log("stopped");
@@ -57,7 +58,4 @@ export class RecorderComponent {
       })
       .catch(err => 'Error getting user media');
   }
-
-
-
 }
