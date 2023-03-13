@@ -1,0 +1,679 @@
+# this is an auto generated file. This will be overwritten
+query TranscribeToMedicalSOAPNotes(
+  $bucket: String!
+  $region: String!
+  $key: String!
+  $cfg: AWSJSON!
+) {
+  transcribeToMedicalSOAPNotes(
+    bucket: $bucket
+    region: $region
+    key: $key
+    cfg: $cfg
+  )
+}
+query GenerateMedicalSOAPSummary($text: String!, $cfg: AWSJSON!) {
+  generateMedicalSOAPSummary(text: $text, cfg: $cfg)
+}
+query InterpretMedicalText(
+  $text: String!
+  $operation: MedicalComprehensionType!
+) {
+  interpretMedicalText(text: $text, operation: $operation)
+}
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    email
+    phone
+    firstName
+    lastName
+    nickName
+    avatar
+    timezone
+    acceptedAgreements
+    stripeId
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      email
+      phone
+      firstName
+      lastName
+      nickName
+      avatar
+      timezone
+      acceptedAgreements
+      stripeId
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUsers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      email
+      phone
+      firstName
+      lastName
+      nickName
+      avatar
+      timezone
+      acceptedAgreements
+      stripeId
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetTemplate($id: ID!) {
+  getTemplate(id: $id) {
+    id
+    name
+    fileArn
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        templateBlocksId
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+query ListTemplates(
+  $filter: ModelTemplateFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTemplates(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncTemplates(
+  $filter: ModelTemplateFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTemplates(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetTemplateBlock($id: ID!) {
+  getTemplateBlock(id: $id) {
+    id
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    tlx
+    tly
+    trx
+    try
+    blx
+    bly
+    brx
+    bry
+    contentType
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    templateBlocksId
+    owner
+  }
+}
+query ListTemplateBlocks(
+  $filter: ModelTemplateBlockFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTemplateBlocks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      template {
+        id
+        name
+        fileArn
+        editors
+        viewers
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      tlx
+      tly
+      trx
+      try
+      blx
+      bly
+      brx
+      bry
+      contentType
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      templateBlocksId
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncTemplateBlocks(
+  $filter: ModelTemplateBlockFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTemplateBlocks(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      template {
+        id
+        name
+        fileArn
+        editors
+        viewers
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      tlx
+      tly
+      trx
+      try
+      blx
+      bly
+      brx
+      bry
+      contentType
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      templateBlocksId
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetDocument($arn: String!) {
+  getDocument(arn: $arn) {
+    arn
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        originalContent
+        parsedContent
+        correctedContent
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        documentBlocksArn
+        documentBlockTemplateId
+        documentBlockTemplateBlockId
+        owner
+      }
+      nextToken
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    documentTemplateId
+    owner
+  }
+}
+query ListDocuments(
+  $arn: String
+  $filter: ModelDocumentFilterInput
+  $limit: Int
+  $nextToken: String
+  $sortDirection: ModelSortDirection
+) {
+  listDocuments(
+    arn: $arn
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
+    items {
+      arn
+      name
+      template {
+        id
+        name
+        fileArn
+        editors
+        viewers
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      blocks {
+        nextToken
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      documentTemplateId
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncDocuments(
+  $filter: ModelDocumentFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncDocuments(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      arn
+      name
+      template {
+        id
+        name
+        fileArn
+        editors
+        viewers
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+      }
+      blocks {
+        nextToken
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      documentTemplateId
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetRecordedNote($id: ID!) {
+  getRecordedNote(id: $id) {
+    id
+    name
+    editors
+    viewers
+    recording {
+      bucket
+      region
+      key
+    }
+    transcription
+    comprehension
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+query ListRecordedNotes(
+  $filter: ModelRecordedNoteFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listRecordedNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      editors
+      viewers
+      recording {
+        bucket
+        region
+        key
+      }
+      transcription
+      comprehension
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncRecordedNotes(
+  $filter: ModelRecordedNoteFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncRecordedNotes(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      editors
+      viewers
+      recording {
+        bucket
+        region
+        key
+      }
+      transcription
+      comprehension
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetUserActivity($id: ID!) {
+  getUserActivity(id: $id) {
+    id
+    userID
+    activity
+    tags
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    documentBlockCorrectionsId
+    owner
+  }
+}
+query ListUserActivities(
+  $filter: ModelUserActivityFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUserActivities(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      userID
+      activity
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      documentBlockCorrectionsId
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUserActivities(
+  $filter: ModelUserActivityFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUserActivities(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      userID
+      activity
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      documentBlockCorrectionsId
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}

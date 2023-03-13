@@ -1,0 +1,14 @@
+{
+  "resourceName": "s303efd659",
+  "policyUUID": "03efd659",
+  "bucketName": "vellvetc2e46ad0165e46efbbf4b82dda1aa12f",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "groupAccess": {},
+  "triggerFunction": "S3Trigger80d619aa"
+}

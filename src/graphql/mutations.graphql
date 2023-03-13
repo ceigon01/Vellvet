@@ -1,0 +1,643 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    email
+    phone
+    firstName
+    lastName
+    nickName
+    avatar
+    timezone
+    acceptedAgreements
+    stripeId
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    email
+    phone
+    firstName
+    lastName
+    nickName
+    avatar
+    timezone
+    acceptedAgreements
+    stripeId
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    email
+    phone
+    firstName
+    lastName
+    nickName
+    avatar
+    timezone
+    acceptedAgreements
+    stripeId
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation CreateTemplate(
+  $input: CreateTemplateInput!
+  $condition: ModelTemplateConditionInput
+) {
+  createTemplate(input: $input, condition: $condition) {
+    id
+    name
+    fileArn
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        templateBlocksId
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation UpdateTemplate(
+  $input: UpdateTemplateInput!
+  $condition: ModelTemplateConditionInput
+) {
+  updateTemplate(input: $input, condition: $condition) {
+    id
+    name
+    fileArn
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        templateBlocksId
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation DeleteTemplate(
+  $input: DeleteTemplateInput!
+  $condition: ModelTemplateConditionInput
+) {
+  deleteTemplate(input: $input, condition: $condition) {
+    id
+    name
+    fileArn
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        templateBlocksId
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation CreateTemplateBlock(
+  $input: CreateTemplateBlockInput!
+  $condition: ModelTemplateBlockConditionInput
+) {
+  createTemplateBlock(input: $input, condition: $condition) {
+    id
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    tlx
+    tly
+    trx
+    try
+    blx
+    bly
+    brx
+    bry
+    contentType
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    templateBlocksId
+    owner
+  }
+}
+mutation UpdateTemplateBlock(
+  $input: UpdateTemplateBlockInput!
+  $condition: ModelTemplateBlockConditionInput
+) {
+  updateTemplateBlock(input: $input, condition: $condition) {
+    id
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    tlx
+    tly
+    trx
+    try
+    blx
+    bly
+    brx
+    bry
+    contentType
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    templateBlocksId
+    owner
+  }
+}
+mutation DeleteTemplateBlock(
+  $input: DeleteTemplateBlockInput!
+  $condition: ModelTemplateBlockConditionInput
+) {
+  deleteTemplateBlock(input: $input, condition: $condition) {
+    id
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    tlx
+    tly
+    trx
+    try
+    blx
+    bly
+    brx
+    bry
+    contentType
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    templateBlocksId
+    owner
+  }
+}
+mutation CreateDocument(
+  $input: CreateDocumentInput!
+  $condition: ModelDocumentConditionInput
+) {
+  createDocument(input: $input, condition: $condition) {
+    arn
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        originalContent
+        parsedContent
+        correctedContent
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        documentBlocksArn
+        documentBlockTemplateId
+        documentBlockTemplateBlockId
+        owner
+      }
+      nextToken
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    documentTemplateId
+    owner
+  }
+}
+mutation UpdateDocument(
+  $input: UpdateDocumentInput!
+  $condition: ModelDocumentConditionInput
+) {
+  updateDocument(input: $input, condition: $condition) {
+    arn
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        originalContent
+        parsedContent
+        correctedContent
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        documentBlocksArn
+        documentBlockTemplateId
+        documentBlockTemplateBlockId
+        owner
+      }
+      nextToken
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    documentTemplateId
+    owner
+  }
+}
+mutation DeleteDocument(
+  $input: DeleteDocumentInput!
+  $condition: ModelDocumentConditionInput
+) {
+  deleteDocument(input: $input, condition: $condition) {
+    arn
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        originalContent
+        parsedContent
+        correctedContent
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        documentBlocksArn
+        documentBlockTemplateId
+        documentBlockTemplateBlockId
+        owner
+      }
+      nextToken
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    documentTemplateId
+    owner
+  }
+}
+mutation CreateRecordedNote(
+  $input: CreateRecordedNoteInput!
+  $condition: ModelRecordedNoteConditionInput
+) {
+  createRecordedNote(input: $input, condition: $condition) {
+    id
+    name
+    editors
+    viewers
+    recording {
+      bucket
+      region
+      key
+    }
+    transcription
+    comprehension
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation UpdateRecordedNote(
+  $input: UpdateRecordedNoteInput!
+  $condition: ModelRecordedNoteConditionInput
+) {
+  updateRecordedNote(input: $input, condition: $condition) {
+    id
+    name
+    editors
+    viewers
+    recording {
+      bucket
+      region
+      key
+    }
+    transcription
+    comprehension
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+mutation DeleteRecordedNote(
+  $input: DeleteRecordedNoteInput!
+  $condition: ModelRecordedNoteConditionInput
+) {
+  deleteRecordedNote(input: $input, condition: $condition) {
+    id
+    name
+    editors
+    viewers
+    recording {
+      bucket
+      region
+      key
+    }
+    transcription
+    comprehension
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}

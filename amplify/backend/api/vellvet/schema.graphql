@@ -1,0 +1,184 @@
+
+type User
+  @model
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] },
+      { allow: owner, ownerField: "id", operations: [read, update] },
+      { allow: private, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  email: String!
+  phone: String
+  firstName: String
+  lastName: String
+  nickName: String
+  avatar: String
+  timezone: String
+  acceptedAgreements: [String!] @auth(rules: [{ allow: owner }, { allow: groups, groups: ["admin"] }])
+  stripeId: String @auth(rules: [{ allow: owner }, { allow: groups, groups: ["admin"] }])
+}
+
+type Template
+  @model
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] },
+      { allow: owner },
+      { allow: private, operations: [read] },
+      { allow: groups, groupsField: "editors", operations: [read, update] },
+      { allow: groups, groupsField: "viewers", operations: [read] }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  fileArn: String
+  blocks: [TemplateBlock] @hasMany
+  editors: [String!]
+  viewers: [String!]
+  file: S3Object
+}
+
+type TemplateBlock
+  @model
+  @auth(
+    rules: [
+      { allow: owner },
+      { allow: groups, groups: ["admin"] },
+      { allow: private }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  template: Template! @belongsTo
+  tlx: Float!
+  tly: Float!
+  trx: Float!
+  try: Float!
+  blx: Float!
+  bly: Float!
+  brx: Float!
+  bry: Float!
+  contentType: ContentType!
+}
+
+type Document
+  @model
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] },
+      { allow: owner },
+      { allow: private, operations: [read] },
+      { allow: groups, groupsField: "editors", operations: [read, update] },
+      { allow: groups, groupsField: "viewers", operations: [read] }
+    ]
+  ) {
+  arn: String! @primaryKey
+  name: String!
+  template: Template @hasOne
+  blocks: [DocumentBlock] @hasMany
+  editors: [String!]
+  viewers: [String!]
+  file: S3Object
+}
+
+type DocumentBlock
+  @model(queries: null, mutations: null, subscriptions: null)
+  @auth(
+    rules: [
+      { allow: owner },
+      { allow: groups, groups: ["admin"] },
+      { allow: private }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  template: Template @hasOne
+  templateBlock: TemplateBlock @hasOne
+  tlx: Float
+  tly: Float
+  trx: Float
+  try: Float
+  blx: Float
+  bly: Float
+  brx: Float
+  bry: Float
+  contentType: ContentType!
+  originalContent: String
+  parsedContent: String
+  correctedContent: String
+  corrections: [UserActivity] @hasMany
+}
+
+type RecordedNote
+  @model
+  @auth(
+    rules: [
+      { allow: groups, groups: ["admin"] },
+      { allow: owner },
+      { allow: private, operations: [read] },
+      { allow: groups, groupsField: "editors", operations: [read, update] },
+      { allow: groups, groupsField: "viewers", operations: [read] },
+      { allow: private, provider: iam, operations: [read, update] }
+    ]
+  ) {
+  id: ID!
+  name: String!
+  editors: [String!]
+  viewers: [String!]
+  recording: S3Object
+  transcription: String
+  comprehension: AWSJSON
+}
+
+type UserActivity
+  @model(mutations: { update: null, delete: null }, subscriptions: { onUpdate: null, onDelete: null })
+  @auth(
+    rules: [
+      { allow: owner, operations: [create, read] },
+      { allow: groups, groups: ["admin"], , operations: [read] },
+      { allow: private, , operations: [read] }
+    ]
+  ) {
+  id: ID!
+  userID: ID!
+  activity: String!
+  tags: [String]
+}
+
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+enum ContentType {
+  HAND_WRITING
+  PRINT
+  DRAWING
+  IMAGE
+  HIGHLIGHT
+  SELECT_ONE
+  SELECT_MULTIPLE
+}
+
+enum MedicalComprehensionType {
+  DETECT_ENTITIES
+  INFER_RX_NORM
+  INFER_ICD_10_CM
+  INFER_SNOMED_CT
+  DETECT_PHI
+}
+
+type Query {
+  transcribeToMedicalSOAPNotes(bucket: String!, region: String!, key: String!, cfg: AWSJSON!): AWSJSON
+    @function(name: "comprehendMedicalText-${env}")
+  
+  generateMedicalSOAPSummary(text: String!, cfg: AWSJSON!): AWSJSON
+    @function(name: "comprehendMedicalText-${env}")
+  
+  interpretMedicalText(text: String!, operation: MedicalComprehensionType!): AWSJSON
+    @function(name: "comprehendMedicalText-${env}")
+
+}

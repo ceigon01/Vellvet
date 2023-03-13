@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import {Observable, of} from "rxjs";
+import { faMicrophone, faSquare } from '@fortawesome/free-solid-svg-icons';
+import { Storage, Auth, Predictions } from 'aws-amplify';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import { Observable, of} from "rxjs";
+import { APIService } from '../API.service';
+import aws_exports from '../../aws-exports';
+
 
 @Component({
   selector: 'app-recorder',
@@ -8,10 +14,19 @@ import {Observable, of} from "rxjs";
 })
 
 export class RecorderComponent {
-  public isRecording:boolean;
-  public recorder:MediaRecorder;
-  public elapsedTime: string;
+  recording:boolean;
+  micRecorder: MediaRecorder;
+  audioBuffer = [];
+  recordedBlob:SafeUrl;
+  elapsedTime: string;
+  faMicrophone = faMicrophone;
+  faSquare = faSquare;
+  spokenText:string = '';
+  spokenTextError:string = '';
 
+  constructor(private sanitizer: DomSanitizer, private api: APIService) {
+  }
+  
   getElapsedTime(start: Date): string {
     const now = new Date();
     console.log(`Elapsed time: ${this.elapsedTime} milliseconds`);
@@ -38,43 +53,104 @@ export class RecorderComponent {
       return min + ":" + sec;
     }
   }
-
+  
   recordAudio () {
-    if(this.isRecording) {
-      this.recorder.stop();
-      this.isRecording = false;
-      this.elapsedTime = "0:00";
+    if(this.recording) {
+      this.recording = !this.recording;
+      this.micRecorder.stop();
       return;
     }
+    this.recording = !this.recording;
+    this.audioBuffer.splice(0);
+    this.elapsedTime = "0:00";
+    this.recordedBlob = "";
+    this.spokenText = '';
+    this.spokenTextError = '';
+    let ng = this;
     // Get user media
     navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(stream => {
-        let ng = this;
+      .then(async stream => {
         // Create a recorder
-        console.log(stream)
-        this.recorder = new MediaRecorder(stream);
+        console.log(stream);
+        ng.micRecorder = new MediaRecorder(stream);
+        ng.micRecorder.addEventListener('dataavailable', async (e) => {
+          ng.audioBuffer.push(e.data);
+        });
         // Start recording
-        this.recorder.start();
-        let refreshIntervalId
-
+        ng.micRecorder.start();
         let start = new Date();
-        refreshIntervalId = setInterval(() => {
-          // Your task code
-          ng.elapsedTime = ng.getElapsedTime(start);
+        let refreshIntervalId = setInterval(() => {
+          if(ng.recording) {
+            // Your task code
+            ng.elapsedTime = ng.getElapsedTime(start);
+          }
         }, 1000);
 
-        this.recorder.onstop = function(ev){
+        ng.micRecorder.addEventListener('stop', async () => {
           console.log("stopped");
           clearInterval(refreshIntervalId);
-          ng.isRecording = false;
-        }
-        this.recorder.addEventListener('dataavailable', (e) => {
-          // convert the stream to a blob
-          const blob = new Blob([e.data], {type: 'audio/ogg'});
-          console.log(blob);
+          if(ng.micRecorder.state === 'inactive') {
+            await ng._processRecording();
+          }
         });
-
-        this.isRecording = !this.isRecording;
       }).catch(err => 'Error getting user media');
+  }
+
+  async _processRecording() {
+    const blob = new Blob(this.audioBuffer, {type: "application/octet-stream"});
+    //const blob = this.createBlob();
+    this.recordedBlob = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
+    let ng = this;
+    const credentials = await Auth.currentUserCredentials();
+    console.log("identityId", credentials.identityId);
+    let fileKey = new Date().valueOf().toString();
+    Storage.put(fileKey, blob, {
+      contentType: "application/octet-stream", level: 'private'
+    })
+      .then((result) => {
+        console.log("Blob stored", result);
+        Predictions.convert({
+          transcription: {
+            source: {
+              bytes: blob
+            },
+            language: "en-US", // other options are "en-GB", "fr-FR", "fr-CA", "es-US"
+          },
+        })
+          .then((value) => {
+            console.log("parsed text", value);
+            this.setText(JSON.stringify(value));
+          }).catch(err => {
+            console.error("Error converting speech to text", err);
+            this.setError(JSON.stringify(err.message, null, 2));
+          })
+          /*
+          ng.api.CreateRecordedNote({
+          name: "Note Created at " + new Date(),
+          recording: {
+            bucket: aws_exports.aws_user_files_s3_bucket,
+            key: `private/${credentials.identityId}/${fileKey}`,
+            region: aws_exports.aws_user_files_s3_bucket_region
+          }
+        }).then(async (createdNote) => {
+          ng.api.OnUpdateRecordedNoteListener({
+            id: { eq: createdNote.id },
+            transcription: { }
+          })
+          let resp = await ng.api.TranscribeToMedicalSOAPNotes(aws_exports.aws_user_files_s3_bucket, aws_exports.aws_user_files_s3_bucket_region, `private/${credentials.identityId}/${fileKey}`, "{}");
+          console.log("Response", resp);
+          ng.setText(JSON.parse(resp)?.transcription);
+        })
+        */
+      })
+      .catch(err => console.log("Error uploading blob", err));
+  }
+
+  setText(text: string): any {
+    this.spokenText += text;
+  }
+
+  setError(error: string): any {
+    this.spokenTextError = error;
   }
 }

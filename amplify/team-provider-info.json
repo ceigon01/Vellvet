@@ -1,0 +1,45 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vellvet-dev-113127-authRole",
+      "UnauthRoleArn": "arn:aws:iam::027778878352:role/amplify-vellvet-dev-113127-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::027778878352:role/amplify-vellvet-dev-113127-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-vellvet-dev-113127-deployment",
+      "UnauthRoleName": "amplify-vellvet-dev-113127-unauthRole",
+      "StackName": "amplify-vellvet-dev-113127",
+      "StackId": "arn:aws:cloudformation:us-east-1:027778878352:stack/amplify-vellvet-dev-113127/67d0d690-8d16-11ed-9b20-120207519467",
+      "AmplifyAppId": "dg7regws4r8cw",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-vellvet-dev-113127-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "vellvet06ae396706ae3967": {}
+      },
+      "storage": {
+        "s303efd659": {}
+      },
+      "function": {
+        "comprehendMedicalText": {
+          "deploymentBucketName": "amplify-vellvet-dev-113127-deployment",
+          "s3Key": "amplify-builds/comprehendMedicalText-575a56676c4f77757350-build.zip"
+        },
+        "vellvet06ae396706ae3967PostConfirmation": {
+          "GROUP": "developers",
+          "deploymentBucketName": "amplify-vellvet-dev-113127-deployment",
+          "s3Key": "amplify-builds/vellvet06ae396706ae3967PostConfirmation-44546e72515239774b72-build.zip"
+        },
+        "S3Trigger80d619aa": {
+          "deploymentBucketName": "amplify-vellvet-dev-113127-deployment",
+          "s3Key": "amplify-builds/S3Trigger80d619aa-6f677a577058364d356a-build.zip"
+        }
+      },
+      "api": {
+        "vellvet": {}
+      },
+      "predictions": {
+        "transcription4406ae83": {}
+      }
+    }
+  }
+}

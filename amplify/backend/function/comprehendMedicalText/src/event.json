@@ -1,0 +1,7 @@
+{
+  "typeName": "Query",
+  "fieldName": "generateMedicalSOAPSummary",
+  "arguments": {
+    "text":"Rahul Kumar is a 24 year old male with fever. He has headaches, nausea and joint pain. He has been prescribed with Dolo 650 twice a day after consuming food."
+ }
+}

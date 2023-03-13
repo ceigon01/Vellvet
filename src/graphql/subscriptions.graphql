@@ -1,0 +1,646 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $id: String
+  $owner: String
+) {
+  onCreateUser(filter: $filter, id: $id, owner: $owner) {
+    id
+    email
+    phone
+    firstName
+    lastName
+    nickName
+    avatar
+    timezone
+    acceptedAgreements
+    stripeId
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnUpdateUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $id: String
+  $owner: String
+) {
+  onUpdateUser(filter: $filter, id: $id, owner: $owner) {
+    id
+    email
+    phone
+    firstName
+    lastName
+    nickName
+    avatar
+    timezone
+    acceptedAgreements
+    stripeId
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnDeleteUser(
+  $filter: ModelSubscriptionUserFilterInput
+  $id: String
+  $owner: String
+) {
+  onDeleteUser(filter: $filter, id: $id, owner: $owner) {
+    id
+    email
+    phone
+    firstName
+    lastName
+    nickName
+    avatar
+    timezone
+    acceptedAgreements
+    stripeId
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnCreateTemplate(
+  $filter: ModelSubscriptionTemplateFilterInput
+  $owner: String
+) {
+  onCreateTemplate(filter: $filter, owner: $owner) {
+    id
+    name
+    fileArn
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        templateBlocksId
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnUpdateTemplate(
+  $filter: ModelSubscriptionTemplateFilterInput
+  $owner: String
+) {
+  onUpdateTemplate(filter: $filter, owner: $owner) {
+    id
+    name
+    fileArn
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        templateBlocksId
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnDeleteTemplate(
+  $filter: ModelSubscriptionTemplateFilterInput
+  $owner: String
+) {
+  onDeleteTemplate(filter: $filter, owner: $owner) {
+    id
+    name
+    fileArn
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        templateBlocksId
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnCreateTemplateBlock(
+  $filter: ModelSubscriptionTemplateBlockFilterInput
+  $owner: String
+) {
+  onCreateTemplateBlock(filter: $filter, owner: $owner) {
+    id
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    tlx
+    tly
+    trx
+    try
+    blx
+    bly
+    brx
+    bry
+    contentType
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    templateBlocksId
+    owner
+  }
+}
+subscription OnUpdateTemplateBlock(
+  $filter: ModelSubscriptionTemplateBlockFilterInput
+  $owner: String
+) {
+  onUpdateTemplateBlock(filter: $filter, owner: $owner) {
+    id
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    tlx
+    tly
+    trx
+    try
+    blx
+    bly
+    brx
+    bry
+    contentType
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    templateBlocksId
+    owner
+  }
+}
+subscription OnDeleteTemplateBlock(
+  $filter: ModelSubscriptionTemplateBlockFilterInput
+  $owner: String
+) {
+  onDeleteTemplateBlock(filter: $filter, owner: $owner) {
+    id
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    tlx
+    tly
+    trx
+    try
+    blx
+    bly
+    brx
+    bry
+    contentType
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    templateBlocksId
+    owner
+  }
+}
+subscription OnCreateDocument(
+  $filter: ModelSubscriptionDocumentFilterInput
+  $owner: String
+) {
+  onCreateDocument(filter: $filter, owner: $owner) {
+    arn
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        originalContent
+        parsedContent
+        correctedContent
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        documentBlocksArn
+        documentBlockTemplateId
+        documentBlockTemplateBlockId
+        owner
+      }
+      nextToken
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    documentTemplateId
+    owner
+  }
+}
+subscription OnUpdateDocument(
+  $filter: ModelSubscriptionDocumentFilterInput
+  $owner: String
+) {
+  onUpdateDocument(filter: $filter, owner: $owner) {
+    arn
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        originalContent
+        parsedContent
+        correctedContent
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        documentBlocksArn
+        documentBlockTemplateId
+        documentBlockTemplateBlockId
+        owner
+      }
+      nextToken
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    documentTemplateId
+    owner
+  }
+}
+subscription OnDeleteDocument(
+  $filter: ModelSubscriptionDocumentFilterInput
+  $owner: String
+) {
+  onDeleteDocument(filter: $filter, owner: $owner) {
+    arn
+    name
+    template {
+      id
+      name
+      fileArn
+      blocks {
+        nextToken
+        startedAt
+      }
+      editors
+      viewers
+      file {
+        bucket
+        region
+        key
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+    }
+    blocks {
+      items {
+        id
+        name
+        tlx
+        tly
+        trx
+        try
+        blx
+        bly
+        brx
+        bry
+        contentType
+        originalContent
+        parsedContent
+        correctedContent
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        documentBlocksArn
+        documentBlockTemplateId
+        documentBlockTemplateBlockId
+        owner
+      }
+      nextToken
+    }
+    editors
+    viewers
+    file {
+      bucket
+      region
+      key
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    documentTemplateId
+    owner
+  }
+}
+subscription OnCreateRecordedNote(
+  $filter: ModelSubscriptionRecordedNoteFilterInput
+  $owner: String
+) {
+  onCreateRecordedNote(filter: $filter, owner: $owner) {
+    id
+    name
+    editors
+    viewers
+    recording {
+      bucket
+      region
+      key
+    }
+    transcription
+    comprehension
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnUpdateRecordedNote(
+  $filter: ModelSubscriptionRecordedNoteFilterInput
+  $owner: String
+) {
+  onUpdateRecordedNote(filter: $filter, owner: $owner) {
+    id
+    name
+    editors
+    viewers
+    recording {
+      bucket
+      region
+      key
+    }
+    transcription
+    comprehension
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
+subscription OnDeleteRecordedNote(
+  $filter: ModelSubscriptionRecordedNoteFilterInput
+  $owner: String
+) {
+  onDeleteRecordedNote(filter: $filter, owner: $owner) {
+    id
+    name
+    editors
+    viewers
+    recording {
+      bucket
+      region
+      key
+    }
+    transcription
+    comprehension
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    owner
+  }
+}
