@@ -4,6 +4,7 @@ import { Storage, Auth, Predictions } from 'aws-amplify';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import { Observable, of} from "rxjs";
 import { APIService } from '../API.service';
+import { Buffer } from "buffer";
 import aws_exports from '../../aws-exports';
 
 
@@ -61,18 +62,18 @@ export class RecorderComponent {
       return;
     }
     this.recording = !this.recording;
-    this.audioBuffer.splice(0);
+    this.audioBuffer = [];
     this.elapsedTime = "0:00";
     this.recordedBlob = "";
     this.spokenText = '';
     this.spokenTextError = '';
     let ng = this;
     // Get user media
-    navigator.mediaDevices.getUserMedia({ audio: true })
+    navigator.mediaDevices.getUserMedia({ audio: true, video: false })
       .then(async stream => {
         // Create a recorder
         console.log(stream);
-        ng.micRecorder = new MediaRecorder(stream);
+        ng.micRecorder = new MediaRecorder(stream, { audioBitsPerSecond : 16000 });
         ng.micRecorder.addEventListener('dataavailable', async (e) => {
           ng.audioBuffer.push(e.data);
         });
@@ -98,7 +99,6 @@ export class RecorderComponent {
 
   async _processRecording() {
     const blob = new Blob(this.audioBuffer, {type: "application/octet-stream"});
-    //const blob = this.createBlob();
     this.recordedBlob = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
     let ng = this;
     const credentials = await Auth.currentUserCredentials();

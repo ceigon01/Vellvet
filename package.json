@@ -29,6 +29,7 @@
     "@popperjs/core": "^2.11.6",
     "aws-amplify": "^5.0.15",
     "bootstrap": "^5.2.3",
+    "buffer": "^6.0.3",
     "rxjs": "~7.8.0",
     "stripe-angular": "^1.7.0",
     "tslib": "^2.3.0",
